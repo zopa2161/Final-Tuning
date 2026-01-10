@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4206cc59041dcd4b9b92b5364fcbcb8, type: 3}
+  m_Name: V6Basic
+  m_EditorClassIdentifier: Assembly-CSharp::EngineModule
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  id: 2
+  moduleName: V6Basic
+  icon: {fileID: 0}
+  _engineType: 1
+  _ccPerCylinder: 500
+  _torquePerLiter: 100
+  _idleRPM: 800
+  _torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.18388456
+      value: 0.78502893
+      inSlope: 1.3354282
+      outSlope: 1.3354282
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.43352142
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4341213
+      value: 0.94675773
+      inSlope: 0.29873714
+      outSlope: 0.29873714
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.741228
+      value: 0.84173334
+      inSlope: -1.4813553
+      outSlope: -1.4813553
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32879904
+    - serializedVersion: 3
+      time: 0.9833374
+      value: 0.7023773
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _response: 2
+  _aspirationModule:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

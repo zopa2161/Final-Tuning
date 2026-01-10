@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="SaveModulePopup.uss" />
+    <ui:VisualElement class="popup-container">
+        <ui:Label text="Save Module As..." class="popup-title" />
+        <ui:TextField name="input-name" class="popup-input" />
+        <ui:Label name="error-msg" text="Name cannot be empty!" class="error-msg" style="visibility: hidden;" />
+        <ui:VisualElement class="button-row">
+            <ui:Button name="btn-cancel" text="Cancel" class="btn-popup" />
+            <ui:Button name="btn-confirm" text="Save" class="btn-popup btn-confirm" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

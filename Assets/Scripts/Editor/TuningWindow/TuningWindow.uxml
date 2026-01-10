@@ -1,0 +1,81 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/Editor/TuningWindow/TuningWindow.uss?fileID=7433441132597879392&amp;guid=8c8f90dd94ce8d842bd86f0e13810647&amp;type=3#TuningWindow" />
+    <ui:VisualElement name="root" class="root-container">
+        <ui:VisualElement name="left-panel" class="left-panel">
+            <ui:VisualElement class="main-toolbar">
+                <ui:Label text="[ View Mode: 3D Simulation | Node Graph ]" class="toolbar-label" />
+                <ui:Button name="btn-toggle-panel" text="Hide Inspector &gt;&gt;" class="toolbar-btn-text-only" />
+            </ui:VisualElement>
+            <ui:TwoPaneSplitView name="horizontal-split-view" orientation="Horizontal" fixed-pane-initial-dimension="400" class="split-view">
+                <ui:VisualElement name="pipeline-view-container" style="flex-grow: 1;" />
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:TwoPaneSplitView name="vertical-split-view" orientation="Vertical" fixed-pane-initial-dimension="400" class="split-view">
+                        <ui:VisualElement name="render-view" class="viewport-container">
+                            <ui:Label text="3D Simulation View" class="section-header" />
+                            <ui:VisualElement name="simulation-control-panel" class="control-panel top-panel">
+                                <ui:DropdownField name="tuningmode-dropdown" tooltip="Mode" class="toolbar-control compact-dropdown" />
+                                <ui:VisualElement class="vertical-divider" />
+                                <ui:Button text="Start" name="simulation-start" class="toolbar-btn btn-start" />
+                                <ui:Button text="Stop" name="simulation-stop" class="toolbar-btn btn-stop" />
+                                <ui:VisualElement class="vertical-divider" />
+                                <ui:Label text="Speed" class="control-label" />
+                                <ui:Slider name="simulation-speed" low-value="0.1" high-value="4.0" value="1.0" class="toolbar-slider" />
+                                <ui:DropdownField name="camera-dropdown" class="toolbar-control flex-dropdown" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="simulation-renderer" class="renderer-view" />
+                            <ui:VisualElement name="inter-control-panel" class="control-panel bottom-panel">
+                                <ui:Label text="Session Data:" class="control-label muted-text" />
+                                <ui:Button text="Save Session" name="session-save-button" class="toolbar-btn btn-blue" />
+                                <ui:Button text="Load Session" name="session-load-button" class="toolbar-btn" />
+                                <ui:Button text="Load B slot" name="b-slot-load" class="toolbar-btn" />
+                                <ui:DropdownField name="sim-env-dropdown" />
+                                <ui:VisualElement style="flex-grow: 1;">
+                                    <ui:Slider value="42" high-value="100" name="timeline-slider" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="bottom-metrics" class="bottom-panel-container" style="flex-direction: row;">
+                            <ui:VisualElement name="metrics-viewport" class="viewport-container metrics-bg" style="flex-grow: 1;">
+                                <ui:Label text="Real-time Metrics" name="current-session-label" class="section-header" />
+                                <ui:VisualElement name="VisualElement" class="metrics-content">
+                                    <ui:VisualElement name="car-graph-view-container" class="graph-container">
+                                        <ui:ScrollView name="metric-scroll-view" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="graph-toggles" class="toggle-container" style="flex-grow: 0; flex-shrink: 0; flex-basis: 150px;">
+                                        <ui:VisualElement name="loaded-data" style="flex-grow: 0; justify-content: flex-end; flex-basis: 100px; flex-shrink: 0;">
+                                            <ui:VisualElement name="slotA-box" class="toolbar-label" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                                                <ui:Label text="Slot A" />
+                                                <ui:VisualElement style="flex-grow: 1;">
+                                                    <ui:Label text="Slot A" name="slotA-data" class="toolbar-btn-text-only toolbar-btn" />
+                                                </ui:VisualElement>
+                                            </ui:VisualElement>
+                                            <ui:VisualElement name="slotB-box" class="toolbar-label" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: space-between;">
+                                                <ui:Label text="Slot A" />
+                                                <ui:VisualElement style="flex-grow: 1;">
+                                                    <ui:Label text="Slot A" name="slotB-data" class="toolbar-btn-text-only toolbar-btn" />
+                                                </ui:VisualElement>
+                                            </ui:VisualElement>
+                                        </ui:VisualElement>
+                                        <ui:VisualElement name="graph-toggle" style="flex-grow: 1; justify-content: flex-start;" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:TwoPaneSplitView>
+                </ui:VisualElement>
+            </ui:TwoPaneSplitView>
+        </ui:VisualElement>
+        <ui:VisualElement name="right-panel" class="right-panel">
+            <ui:VisualElement class="right-header">
+                <ui:Label name="car-name-label" text="No Vehicle Selected" class="header-title" />
+            </ui:VisualElement>
+            <ui:VisualElement class="right-footer">
+                <ui:Button name="btn-reset" text="Reset All" class="footer-btn" />
+                <ui:Button name="btn-save-all" text="Save All Changes" class="footer-btn btn-accent" />
+            </ui:VisualElement>
+            <ui:ScrollView name="module-scroll-view" class="module-scroll-view">
+                <ui:VisualElement name="module-list-container" style="flex-grow: 1;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

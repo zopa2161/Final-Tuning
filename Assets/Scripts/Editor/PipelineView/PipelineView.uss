@@ -1,0 +1,67 @@
+.pipeline-container {
+    padding: 10px;
+    align-items: stretch;
+    background-color: rgb(32, 32, 32);
+}
+
+.module-box {
+    background-color: rgb(56, 56, 56);
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgb(85, 85, 85);
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
+.module-title {
+    -unity-font-style: bold;
+    color: rgb(170, 170, 170);
+    margin-bottom: 5px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(85, 85, 85);
+}
+
+.flow-arrow {
+    align-self: center;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    margin-bottom: 5px;
+}
+
+.row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.bar-row {
+    margin-bottom: 4px;
+}
+
+.bar-label {
+    font-size: 10px;
+    color: rgb(170, 170, 170);
+    margin-bottom: 1px;
+}
+
+.slim-progress {
+    height: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.slim-progress .unity-progress-bar__background {
+    background-color: rgb(42, 42, 42);
+    border-radius: 2px;
+    border-width: 0;
+}
+
+.slim-progress .unity-progress-bar__fill {
+    background-color: rgb(76, 175, 80);
+    border-radius: 2px;
+}
+
+.shifting .unity-progress-bar__fill {
+    background-color: rgb(255, 193, 7);
+}
+

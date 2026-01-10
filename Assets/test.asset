@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1efd3453b9f492198c268d32d7a27d2, type: 3}
+  m_Name: test
+  m_EditorClassIdentifier: Assembly-CSharp::RewardProfile
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  Name: BasicReward
+  ID: 0
+  rules:
+  - rid: 3414238227967770685
+  - rid: 3414238227967770686
+  - rid: 984029967074984173
+  references:
+    version: 2
+    RefIds:
+    - rid: 984029967074984173
+      type: {class: PassCheckerReward, ns: , asm: Assembly-CSharp}
+      data:
+        isEnabled: 1
+        weight: 0.05
+    - rid: 3414238227967770685
+      type: {class: SpeedReward, ns: , asm: Assembly-CSharp}
+      data:
+        isEnabled: 1
+        weight: 0.001
+        minSpeedTresholdKm: 10
+        maxSpeedTresholdKm: 50
+    - rid: 3414238227967770686
+      type: {class: WallCollisionPenalty, ns: , asm: Assembly-CSharp}
+      data:
+        isEnabled: 1
+        weight: 1
+        frontCollisionPenalty: -1
+        rearCollisionPenalty: -1
+        sideCollisionPenalty: -1

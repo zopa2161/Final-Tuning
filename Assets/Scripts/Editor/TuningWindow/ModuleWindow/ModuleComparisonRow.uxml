@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="ModuleComparisonRow.uss" />
+
+    <ui:VisualElement class="row-root">
+        
+        <ui:VisualElement name="row-header" class="row-header">
+            <ui:Label name="foldout-arrow" text="▼" class="foldout-arrow"/>
+            <ui:Label name="module-title" text="Module Name" class="module-title"/>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="row-body" class="comparison-row">
+            
+            <ui:VisualElement class="inspector-column live-bg">
+                <ui:Label text="Live Instance" class="column-header header-live"/>
+                <ui:IMGUIContainer name="odin-live" class="odin-container"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="action-column">
+                <ui:Button name="btn-list" text="List" class="action-btn btn-list"/>
+                <ui:Button name="btn-set" text="← Set" class="action-btn btn-set"/>
+                <ui:Button name="btn-save" text="Save →" class="action-btn btn-save"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="inspector-column so-bg">
+                <ui:Label text="Scriptable Object" class="column-header header-so"/>
+                <ui:IMGUIContainer name="odin-so" class="odin-container"/>
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

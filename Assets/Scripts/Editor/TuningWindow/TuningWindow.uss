@@ -1,0 +1,142 @@
+
+/* =========================================
+   Global & Layout
+   ========================================= */
+.root-container {
+    flex-direction: row; /* 가로 배치 */
+    flex-grow: 1;
+    background-color: #202020;
+}
+
+.left-panel {
+    flex-grow: 1; /* 남는 공간 다 차지 */
+    flex-direction: column;
+}
+
+.right-panel {
+    width: 650px; /* 고정 너비 복구 */
+    min-width: 650px;
+    background-color: #282828;
+    border-left-width: 1px;
+    border-left-color: #181818;
+    flex-direction: column;
+    /* 애니메이션/접기 관련 코드 제거됨 */
+}
+
+/* =========================================
+   Control Panels & Buttons (스타일 유지)
+   ========================================= */
+.main-toolbar {
+    height: 24px;
+    background-color: #303030;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom-width: 1px;
+    border-bottom-color: #151515;
+}
+
+.toolbar-label {
+    color: #AAAAAA;
+    font-size: 11px;
+}
+
+.toolbar-btn-text-only {
+    background-color: rgba(0,0,0,0);
+    border-width: 0;
+    color: #888888;
+    cursor: link;
+}
+.toolbar-btn-text-only:hover {
+    color: #E0E0E0;
+}
+
+.viewport-container {
+    flex-grow: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.section-header {
+    background-color: #202020;
+    color: #888888;
+    padding: 4px 6px;
+    font-size: 11px;
+    -unity-font-style: bold;
+    border-bottom-width: 1px;
+    border-bottom-color: #181818;
+}
+
+.control-panel {
+    flex-direction: row;
+    align-items: center;
+    background-color: #2A2A2A;
+    padding: 4px;
+    height: 34px;
+    flex-shrink: 0;
+}
+
+.top-panel {
+    border-bottom-width: 1px;
+    border-bottom-color: #1A1A1A;
+}
+
+.bottom-panel {
+    border-top-width: 1px;
+    border-top-color: #353535;
+    background-color: #252525;
+}
+
+.vertical-divider {
+    width: 1px;
+    height: 18px;
+    background-color: #404040;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.toolbar-btn {
+    height: 24px;
+    background-color: #383838;
+    border-width: 1px;
+    border-color: #303030;
+    border-radius: 3px;
+    color: #E0E0E0;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    -unity-font-style: bold;
+    font-size: 12px;
+}
+.toolbar-btn:hover { background-color: #454545; border-color: #555555; }
+.toolbar-btn:active { background-color: #222222; color: #AAAAAA; }
+
+.btn-start { border-bottom-width: 2px; border-bottom-color: #4CAF50; }
+.btn-stop { border-bottom-width: 2px; border-bottom-color: #F44336; }
+.btn-blue { background-color: #1565C0; border-color: #0D47A1; color: white; }
+.btn-blue:hover { background-color: #1E88E5; }
+
+.toolbar-control { margin-left: 2px; margin-right: 2px; height: 22px; }
+.compact-dropdown { width: 110px; }
+.flex-dropdown { flex-grow: 1; min-width: 80px; }
+.toolbar-slider { flex-grow: 1; margin-left: 5px; margin-right: 5px; min-width: 60px; }
+.control-label { color: #AAAAAA; font-size: 11px; margin-left: 4px; -unity-align-text-vertical: middle; }
+.muted-text { color: #666666; }
+.toolbar-control > Label { display: none; }
+
+.renderer-view { flex-grow: 1; background-color: #000000; }
+.metrics-bg { background-color: #1E1E1E; }
+.metrics-content { flex-grow: 1; flex-direction: row; }
+.graph-container { flex-grow: 1; }
+.toggle-container { width: 120px; background-color: #252525; border-left-width: 1px; border-left-color: #151515; }
+
+.right-header { height: 30px; background-color: #303030; justify-content: center; padding-left: 10px; border-bottom-width: 1px; border-bottom-color: #151515; }
+.header-title { -unity-font-style: bold; color: #E0E0E0; }
+.module-scroll-view { flex-grow: 1; background-color: #282828; }
+.right-footer { height: 40px; flex-direction: row; align-items: center; justify-content: space-around; background-color: #202020; border-top-width: 1px; border-top-color: #151515; padding: 5px; }
+.footer-btn { height: 28px; border-radius: 4px; background-color: #383838; color: #CCCCCC; border-width: 1px; border-color: #303030; width: 100px; }
+.btn-accent { width: 140px; background-color: #2E7D32; color: white; }
+.btn-accent:hover { background-color: #388E3C; }

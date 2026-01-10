@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef34fc9af4fe01f489e9fc77dcd35ba7, type: 3}
+  m_Name: TRANSMISSIONMODULE_testttt
+  m_EditorClassIdentifier: Assembly-CSharp::TransmissionModule
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  id: 1
+  moduleName: testttt
+  icon: {fileID: 0}
+  _finalDriveRatio: 6.13
+  _gearInfos:
+  - gearRatio: 4
+    upshiftRpmPercent: 0.755
+    downshiftRpmPercent: 0.539
+  - gearRatio: 3
+    upshiftRpmPercent: 0.618
+    downshiftRpmPercent: 0.335
+  - gearRatio: 2
+    upshiftRpmPercent: 0.386
+    downshiftRpmPercent: 0.108
+  - gearRatio: 1
+    upshiftRpmPercent: 0.662
+    downshiftRpmPercent: 0.138
+  - gearRatio: 0.5
+    upshiftRpmPercent: 0.605
+    downshiftRpmPercent: 0.259
+  _shiftTime: 0.345

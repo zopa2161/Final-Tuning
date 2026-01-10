@@ -1,0 +1,42 @@
+﻿.popup-container {
+    padding: 15px;
+    background-color: #2D2D2D;
+    height: 100%;
+    justify-content: center;
+}
+
+.popup-title {
+    font-size: 14px;
+    -unity-font-style: bold;
+    color: #EEEEEE;
+    margin-bottom: 10px;
+}
+
+.popup-input {
+    margin-bottom: 5px;
+}
+
+.error-msg {
+    color: #FF5252;
+    font-size: 10px;
+    margin-bottom: 10px;
+    height: 12px;
+}
+
+.button-row {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.btn-popup {
+    width: 70px;
+    height: 25px;
+    margin-left: 5px;
+}
+
+.btn-confirm {
+    background-color: #4F6F52;
+    color: white;
+}
+.btn-confirm:hover { background-color: #6A8F6D; }

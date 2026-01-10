@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40d4b3c8d90dd042b89b9a030736734, type: 3}
+  m_Name: BaseTire
+  m_EditorClassIdentifier: Assembly-CSharp::TireModule
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  id: 1
+  moduleName: BaseTire
+  icon: {fileID: 0}
+  _widthMm: 245
+  _aspectRatio: 45
+  _tireWeightKg: 10
+  _tireType: 0
+  _gripFactor: 1
+  _stiffness: 1.7

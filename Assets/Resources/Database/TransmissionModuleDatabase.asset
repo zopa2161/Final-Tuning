@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ef466893dfdd04e9488feec9768831, type: 3}
+  m_Name: TransmissionModuleDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::BaseModuleDatabase
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  datas:
+  - {fileID: 11400000, guid: 6847e026944320c45874cd058f5bb8e6, type: 2}
+  - {fileID: 11400000, guid: 7b708b715847dd5458811d33815e3e32, type: 2}

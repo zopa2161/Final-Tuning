@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4206cc59041dcd4b9b92b5364fcbcb8, type: 3}
+  m_Name: V6Disel
+  m_EditorClassIdentifier: Assembly-CSharp::EngineModule
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  id: 3
+  moduleName: V6Disel
+  icon: {fileID: 0}
+  _engineType: 1
+  _ccPerCylinder: 449
+  _torquePerLiter: 120
+  _idleRPM: 800
+  _torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2299794
+      value: 0.5581396
+      inSlope: 3.2974973
+      outSlope: 3.2974973
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.10241327
+    - serializedVersion: 3
+      time: 0.5296513
+      value: 0.95015806
+      inSlope: 0.3712972
+      outSlope: 0.3712972
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5083072
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.79556096
+      value: 0.9404801
+      inSlope: -0.24187593
+      outSlope: -0.24187593
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.90562797
+      value: 0.75553554
+      inSlope: -1.4053038
+      outSlope: -1.4053038
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.39577064
+    - serializedVersion: 3
+      time: 1
+      value: 0.6666641
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _response: 0
+  _aspirationModule:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

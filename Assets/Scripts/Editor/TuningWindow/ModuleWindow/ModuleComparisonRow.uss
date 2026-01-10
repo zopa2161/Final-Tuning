@@ -1,0 +1,167 @@
+/* =========================================================
+   ModuleComparisonRow.uss
+   ========================================================= */
+
+/* 전체 행 컨테이너 */
+.comparison-row {
+    flex-direction: row;
+    background-color: #262626;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-color: #1A1A1A;
+    min-height: 120px; /* 오딘 인스펙터가 그려질 최소 높이 확보 */
+    overflow: hidden; /* 둥근 모서리 적용 */
+    /* ✅ [추가 1] 부모 컨테이너의 가로폭을 가득 채움 */
+    width: 100%;
+    /* ✅ [추가 2] 공간이 부족해도 절대 찌그러지지 않음 (필수!) */
+    flex-shrink: 0;
+    flex-grow: 1;
+
+}
+
+/* --- 좌우 인스펙터 컬럼 --- */
+.inspector-column {
+    flex-grow: 1; /* 남은 공간을 1:1로 나눠가짐 */
+    flex-shrink: 0;
+    flex-basis: 0;  /* 균등 분할을 위한 설정 */
+    flex-direction: column;
+    padding: 6px;
+}
+
+.live-bg {
+    background-color: #2A2A2A;
+}
+
+.so-bg {
+    background-color: #2E2E2E;
+}
+
+/* --- 헤더 텍스트 --- */
+.column-header {
+    font-size: 12px;
+    -unity-font-style: bold;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom-width: 2px;
+}
+
+/* Live는 생동감 있는 녹색 */
+.header-live {
+    color: #81C784;
+    border-bottom-color: #2E7D32;
+}
+
+/* SO는 파일 느낌의 주황/붉은색 */
+.header-so {
+    color: #FFAB91;
+    border-bottom-color: #D84315;
+}
+
+/* --- 오딘이 그려질 컨테이너 --- */
+.odin-container {
+    flex-grow: 1;
+    flex-shrink: 0;
+    min-width: 250px;
+    overflow: hidden;
+    /* IMGUI 컨테이너는 내용물에 따라 늘어나야 하므로 flex-grow 필수 */
+}
+
+/* --- 중앙 버튼 기둥 --- */
+.action-column {
+    width: 50px;
+    background-color: #1F1F1F;
+    border-left-width: 1px;
+    border-left-color: #111111;
+    border-right-width: 1px;
+    border-right-color: #111111;
+
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    flex-shrink: 0;
+}
+
+/* 액션 버튼들 */
+.action-btn {
+    width: 40px;
+    height: 24px;
+    margin: 3px 0;
+    font-size: 10px;
+    background-color: #444444;
+    color: #CCCCCC;
+    border-width: 0;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.action-btn:hover {
+    background-color: #666666;
+    color: #FFFFFF;
+}
+
+/* 리스트 버튼 (SO 교체) */
+.btn-list {
+    margin-bottom: 15px; /* 위쪽 그룹과 분리 */
+    background-color: #5D4037; /* 갈색 톤 */
+}
+.btn-list:hover { background-color: #795548; }
+
+/* Set 버튼 (가져오기) */
+.btn-set:hover { background-color: #4CAF50; color: white; }
+
+/* Save 버튼 (저장하기) */
+.btn-save:hover { background-color: #F44336; color: white; }
+/* ModuleComparisonRow.uss */
+
+/* 최상위 컨테이너 */
+.row-root {
+    margin-bottom: 5px;
+    border-width: 1px;
+    border-color: #1A1A1A;
+    border-radius: 4px;
+    background-color: #262626;
+    overflow: hidden; /* 둥근 모서리 유지 */
+    flex-shrink: 0; /* 찌그러짐 방지 */
+}
+
+/* --- [New] 헤더 스타일 --- */
+.row-header {
+    height: 24px;
+    flex-direction: row;
+    align-items: center;
+    background-color: #383838;
+    padding-left: 5px;
+    border-bottom-width: 1px;
+    border-bottom-color: #202020;
+}
+
+.row-header:hover {
+    background-color: #444444; /* 마우스 올리면 밝게 */
+    cursor: link; /* 손가락 커서 */
+}
+
+.foldout-arrow {
+    font-size: 10px;
+    color: #AAAAAA;
+    width: 15px;
+    -unity-font-style: bold;
+}
+
+.module-title {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: #EEEEEE;
+}
+
+/* --- 기존 Body 스타일 --- */
+.comparison-row {
+    flex-direction: row;
+    /* 기존 설정 유지하되, margin/border는 root로 옮김 */
+    min-height: 120px;
+}
+
+/* [핵심] 접혔을 때 적용할 스타일 */
+.body-collapsed {
+    display: none; /* 아예 화면에서 제거 */
+}

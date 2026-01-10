@@ -1,0 +1,35 @@
+/* 노드 전체 모양: 둥글고 세련되게 */
+.car-node {
+    background-color: rgba(30, 30, 30, 0.9); /* 반투명 검정 */
+    border-radius: 12px;
+    border-width: 2px;
+    border-color: #444444;
+    min-width: 180px;
+}
+
+/* 선택되었을 때 네온 효과 */
+.car-node:selected {
+    border-color: #00E5FF; /* Cyan Neon */
+    border-width: 2px;
+}
+
+/* 타이틀 바 꾸미기 */
+.car-node #title {
+    background-color: #2D2D2D;
+    height: 35px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.car-node #title-label {
+    color: #FFFFFF;
+    font-size: 14px;
+    -unity-font-style: bold;
+    margin-left: 5px;
+}
+
+/* 포트 색상 커스텀 (타입별로 색상 지정 가능) */
+.type-float #connector {
+    border-color: #00E5FF; /* Float은 Cyan */
+    background-color: #000000;
+}

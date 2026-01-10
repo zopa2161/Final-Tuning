@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="WheelUnit" src="project://database/Assets/Scripts/Editor/PipelineView/Widget/WheelUnit.uxml?fileID=9197481963319205126&amp;guid=09cc6e0099b34db4802ad28b33b7053d&amp;type=3#WheelUnit" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-between;">
+        <ui:VisualElement style="flex-grow: 1; align-self: auto; align-items: center;">
+            <ui:Instance template="WheelUnit" name="wheel-fl" />
+            <ui:Instance template="WheelUnit" name="wheel-rl" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; align-items: center;">
+            <ui:Instance template="WheelUnit" name="wheel-fr" />
+            <ui:Instance template="WheelUnit" name="wheel-rr" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="wheel-unit">
+        <ui:VisualElement class="row" style="margin-bottom: 4px;">
+            <ui:Label name="wheel-name-lbl" text="FL" style="-unity-font-style: bold; color: rgb(221, 221, 221);" />
+            <ui:Label name="wheel-rpm-lbl" text="0 RPM" style="font-size: 10px; color: rgb(170, 170, 170);" />
+        </ui:VisualElement>
+        <ui:VisualElement class="wheel-visual-box">
+            <ui:VisualElement class="slip-overlay" />
+            <ui:VisualElement name="steering-pivot" class="steering-container">
+                <ui:VisualElement class="tire-image-placeholder" style="flex-basis: auto;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="slip-arrow-pivot" class="arrow-pivot">
+                <ui:VisualElement name="slip-arrow-graphic" class="arrow-graphic-placeholder" style="flex-basis: auto;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="margin-top: 4px;">
+            <ui:Label name="drive-trq-lbl" text="D: 0 Nm" class="small-info-lbl" style="color: rgb(76, 175, 80);" />
+            <ui:Label name="brake-trq-lbl" text="B: 0 Nm" class="small-info-lbl" style="color: rgb(244, 67, 54);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

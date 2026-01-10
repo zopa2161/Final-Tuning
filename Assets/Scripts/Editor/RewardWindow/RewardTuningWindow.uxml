@@ -1,0 +1,28 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/Editor/RewardWindow/RewardTuningWindow.uss?fileID=7433441132597879392&amp;guid=826c8f6fa5e4afe40b2b1f8732117cf0&amp;type=3#RewardTuningWindow" />
+    <ui:VisualElement name="root" class="root-container">
+        <ui:VisualElement name="left-column" class="column">
+            <ui:VisualElement name="reward-metric-panel" class="panel">
+                <ui:Label text="Reward Metrics" class="panel-header" />
+                <ui:VisualElement name="reward-metric-content" class="panel-content" />
+            </ui:VisualElement>
+            <ui:VisualElement name="car-state-panel" class="panel">
+                <ui:Label text="Car State" class="panel-header" />
+                <ui:VisualElement name="car-state-content" class="panel-content" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="right-column" class="column">
+            <ui:VisualElement name="inspector-panel" class="panel full-height">
+                <ui:Label text="Profile Inspector" class="panel-header" />
+                <ui:ScrollView name="inspector-scroll-view">
+                    <ui:VisualElement name="odin-container" style="flex-grow: 1;" />
+                </ui:ScrollView>
+                <ui:VisualElement name="inspector-panel-footer" style="flex-grow: 0; flex-basis: 50px; flex-direction: row; flex-shrink: 0;">
+                    <ui:Button text="save" name="save-profile" parse-escape-sequences="false" style="flex-basis: 60px;" />
+                    <ui:Button text="Create &#10;Empty Profile" name="create-profile" parse-escape-sequences="false" emoji-fallback-support="false" style="flex-basis: 60px;" />
+                    <ui:Button text="List" name="profile-list" parse-escape-sequences="false" style="flex-basis: 60px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="PresetEditorWindow.uss" />
+
+    <ui:TwoPaneSplitView fixed-pane-index="0" fixed-pane-initial-dimension="250">
+        
+        <ui:VisualElement class="left-pane">
+            <ui:Label text="Module Database" class="pane-header"/>
+            
+            <ui:DropdownField name="type-selector" label="Type" class="type-dropdown" />
+            
+            <ui:ListView name="so-list" class="so-list" />
+            
+            <ui:Button name="btn-create" text="+ Create New Module" class="btn-create" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="right-pane">
+            <ui:Label text="Inspector" class="pane-header"/>
+            <ui:IMGUIContainer name="odin-inspector" class="odin-container" />
+        </ui:VisualElement>
+
+    </ui:TwoPaneSplitView>
+</ui:UXML>

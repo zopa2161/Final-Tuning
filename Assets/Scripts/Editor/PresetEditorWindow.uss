@@ -1,0 +1,44 @@
+.pane-header {
+    height: 30px;
+    -unity-text-align: middle-left;
+    padding-left: 10px;
+    background-color: #252525;
+    -unity-font-style: bold;
+    color: #AAAAAA;
+    border-bottom-width: 1px;
+    border-bottom-color: #151515;
+}
+
+.left-pane {
+    background-color: #303030;
+    min-width: 200px;
+}
+
+.type-dropdown {
+    margin: 10px;
+}
+
+.so-list {
+    flex-grow: 1;
+    background-color: #2A2A2A;
+    margin: 0 10px 10px 10px;
+    border-width: 1px;
+    border-color: #1A1A1A;
+}
+
+.btn-create {
+    height: 35px;
+    margin: 10px;
+    background-color: #4F6F52;
+    color: white;
+}
+.btn-create:hover { background-color: #6A8F6D; }
+
+.right-pane {
+    background-color: #383838;
+    padding: 10px;
+}
+
+.odin-container {
+    flex-grow: 1;
+}

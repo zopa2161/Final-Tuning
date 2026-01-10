@@ -1,0 +1,24 @@
+/* 전체 위젯 컨테이너 */
+.steering-widget {
+    width: 150px;
+    height: 150px;
+    /* 내부 요소를 중앙에 배치 */
+    justify-content: center;
+    align-items: center;
+    /* 배경색 예시 (확인용, 실제론 투명하게) */
+    /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
+/* 회전할 핸들 그래픽 */
+.steering-wheel-graphic {
+    width: 100%;  /* 부모 크기에 맞춤 */
+    height: 100%;
+    /* 준비한 핸들 이미지 연결 (경로 수정 필요!) */
+    background-image: url("project://database/Assets/UISprite/steeringWheel.png");
+    -unity-background-scale-mode: scale-to-fit; /* 비율 유지하며 맞춤 */
+
+    /* 부드러운 회전을 위한 트랜지션 (선택 사항) */
+    /*transition-property: rotate;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out-circ;*/
+}

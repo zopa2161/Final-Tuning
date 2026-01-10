@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef34fc9af4fe01f489e9fc77dcd35ba7, type: 3}
+  m_Name: RefactoringBaseTransmission
+  m_EditorClassIdentifier: Assembly-CSharp::TransmissionModule
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  id: 1
+  moduleName: RefactoringBaseTransmission
+  icon: {fileID: 0}
+  _finalDriveRatio: 4.25
+  _gearInfos:
+  - gearRatio: 4
+    upshiftRpmPercent: 0.4
+    downshiftRpmPercent: 0.125
+  - gearRatio: 3.2
+    upshiftRpmPercent: 0.35
+    downshiftRpmPercent: 0.125
+  - gearRatio: 2.5
+    upshiftRpmPercent: 0.3
+    downshiftRpmPercent: 0.175
+  - gearRatio: 2
+    upshiftRpmPercent: 0.275
+    downshiftRpmPercent: 0.15
+  - gearRatio: 1.5
+    upshiftRpmPercent: 0.25
+    downshiftRpmPercent: 0.15
+  - gearRatio: 1
+    upshiftRpmPercent: 0.225
+    downshiftRpmPercent: 0.15
+  _shiftTime: 1

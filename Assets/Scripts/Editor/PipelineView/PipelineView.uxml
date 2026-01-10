@@ -1,0 +1,101 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="SteeringImage" src="project://database/Assets/Scripts/Editor/PipelineView/Widget/SteeringImage.uxml?fileID=9197481963319205126&amp;guid=a48469c017ea962458f04477f614c467&amp;type=3#SteeringImage" />
+    <Style src="project://database/Assets/Scripts/Editor/PipelineView/PipelineView.uss?fileID=7433441132597879392&amp;guid=8d8bceb437f5461a9c1ab51e5b660088&amp;type=3#PipelineView" />
+    <Style src="project://database/Assets/Scripts/Editor/PipelineView/Widget/WheelUnit.uss?fileID=7433441132597879392&amp;guid=4f782b84f90647b987b0437dc26124bc&amp;type=3#WheelUnit" />
+    <ui:ScrollView name="pipeline-scroll" mode="Vertical">
+        <ui:VisualElement class="pipeline-container" style="width: 332px;">
+            <ui:VisualElement name="input-module" class="module-box">
+                <ui:Label text="DRIVER INPUT" class="module-title" />
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:VisualElement class="row" style="flex-direction: column; align-items: center;">
+                            <ui:Label text="Steering" />
+                            <ui:Instance template="SteeringImage" name="steering-wheel" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                        <ui:VisualElement class="row" style="flex-direction: column; align-items: center; justify-content: space-around;">
+                            <ui:Label text="Throttle" />
+                            <VerticalGauge name="throttle-gauge" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="row" style="flex-direction: column; align-items: center; justify-content: space-around;">
+                            <ui:Label text="Brake" />
+                            <VerticalGauge name="brake-gauge" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="engine-module" class="module-box">
+                <ui:Label text="ENGINE" class="module-title" />
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; align-items: stretch; align-self: center;">
+                        <ui:VisualElement class="row" style="flex-direction: column; justify-content: space-between; align-items: center;">
+                            <CircularGauge name="rpm-gauge" />
+                            <ui:Label text="RPM" name="rpm-label" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; align-items: stretch; align-self: center;">
+                        <ui:VisualElement class="row" style="flex-direction: column; justify-content: space-between; align-items: center;">
+                            <CircularGauge name="speed-gauge" />
+                            <ui:Label text="Km/h" name="speed-label" emoji-fallback-support="false" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; justify-content: space-between; align-items: center;">
+                        <VerticalGauge name="torque-vertical-gauge" Gauge-width="20" />
+                        <ui:Label text="Torque" name="torque-label" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="transmission-module" class="module-box">
+                <ui:Label text="TRANSMISSION" class="module-title" />
+                <ui:VisualElement name="VisualElement" style="flex-direction: row; justify-content: space-between; align-self: stretch; align-items: center;">
+                    <ui:VisualElement style="flex-direction: column; align-items: center; margin-bottom: 10px; justify-content: flex-start;">
+                        <ui:Label name="gear-index-lbl" text="N" style="font-size: 32px; -unity-font-style: bold; color: rgb(255, 255, 255); margin-right: 10px;" />
+                        <ui:Label name="gear-ratio-lbl" text="Ratio: 0.000" style="font-size: 12px; color: rgb(136, 136, 136); margin-bottom: 5px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; justify-content: space-between;">
+                        <ui:VisualElement class="bar-row">
+                            <ui:Label text="Gear RPM" class="bar-label" />
+                            <ui:ProgressBar name="rpm-bar" low-value="0" high-value="1" class="slim-progress" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="bar-row">
+                            <ui:Label text="Shift Progress" class="bar-label" />
+                            <ui:ProgressBar name="shift-bar" low-value="0" high-value="1" class="slim-progress" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="bar-row">
+                            <ui:Label text="Clutch" class="bar-label" />
+                            <ui:ProgressBar name="clutch-bar" low-value="0" high-value="1" class="slim-progress" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="align-items: center; width: 40px; flex-shrink: 0; justify-content: space-between;">
+                        <ui:Label text="Trq" style="font-size: 10px; color: rgb(170, 170, 170); margin-bottom: 2px;" />
+                        <VerticalGauge name="trans-torque-gauge" value="0.5" fill-color="#FF9800" style="width: 15px; height: 80px;" />
+                        <ui:Label name="torque-val-lbl" text="0 Nm" style="font-size: 9px; color: rgb(136, 136, 136); margin-top: 2px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="wheel-module" class="module-box">
+                <ui:Label text="Wheels" class="module-title" />
+                <ui:VisualElement name="wheel-module-container" style="flex-direction: column; justify-content: space-between;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="brake-module" class="module-box">
+                <ui:Label text="Brake" class="module-title" />
+                <ui:VisualElement name="brake-module-container" style="flex-direction: row; justify-content: space-between;">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:VisualElement class="bar-row" style="flex-direction: row; justify-content: space-between;">
+                            <ui:Label text="Front" class="bar-label" style="flex-basis: 30px;" />
+                            <ui:ProgressBar name="front-bar" low-value="0" high-value="1" class="slim-progress" style="flex-grow: 1;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="bar-row" style="flex-direction: row; justify-content: space-between; align-items: stretch;">
+                            <ui:Label text="Rear " class="bar-label" style="flex-basis: 30px;" />
+                            <ui:ProgressBar name="rear-bar" low-value="0" high-value="1" class="slim-progress" style="flex-grow: 1;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <IndicatorLamp name="abs-lamp" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>

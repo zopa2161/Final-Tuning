@@ -1,0 +1,71 @@
+.wheel-grid-container {
+    padding: 5px;
+}
+
+.wheel-unit {
+    width: 90px;
+    background-color: rgb(42, 42, 42);
+    border-radius: 4px;
+    padding: 5px;
+    align-items: center;
+}
+
+.small-info-lbl {
+    font-size: 9px;
+    margin-bottom: 1px;
+}
+
+.wheel-visual-box {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(26, 26, 26);
+    border-radius: 40px;
+    border-width: 2px;
+    border-color: rgb(68, 68, 68);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.steering-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.tire-image-placeholder {
+    width: 24px;
+    height: 60px;
+    background-color: rgb(85, 85, 85);
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgb(34, 34, 34);
+}
+
+.slip-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-pivot {
+    width: 0;
+    height: 0;
+    align-items: center;
+}
+
+.arrow-graphic-placeholder {
+    width: 10px;
+    height: 20px;
+    background-color: rgb(76, 175, 80);
+    margin-bottom: 30px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}

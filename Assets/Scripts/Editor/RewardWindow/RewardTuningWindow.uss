@@ -1,0 +1,42 @@
+/* 1. 전체 레이아웃 설정 */
+.root-container {
+    flex-direction: row; /* 좌우 배치 */
+    width: 100%;
+    height: 100%;
+    background-color: #383838; /* 유니티 에디터 기본 배경색과 유사 */
+    padding: 4px;
+}
+
+/* 컬럼 공통 */
+.column {
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 50%; /* 1:1 비율 */
+    margin: 2px; /* 컬럼 간 간격 */
+}
+
+/* 2. 패널(박스) 스타일 - 심플하게 */
+.panel {
+    flex-grow: 1;
+    margin-bottom: 4px;
+    background-color: #404040; /* 배경보다 살짝 밝은 회색 */
+    border-width: 1px;
+    border-color: #252525; /* 얇은 검은색 테두리 */
+}
+
+/* 3. 헤더 스타일 - 굵은 글씨, 하단 라인 */
+.panel-header {
+    -unity-font-style: bold;
+    font-size: 13px;
+    color: #d2d2d2; /* 밝은 회색 텍스트 */
+    background-color: #484848; /* 헤더 배경 구분 */
+    padding: 6px 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: #252525;
+}
+
+/* 4. 콘텐츠 영역 - 패딩만 추가 */
+.panel-content {
+    flex-grow: 1;
+    padding: 8px;
+}
