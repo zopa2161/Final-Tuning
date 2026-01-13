@@ -24,7 +24,8 @@ public class TuningController
     private RenderingViewController _renderingController;
     private ReplayController _replayController;
     private PipelineController _pipelineController;
-    
+
+    private List<ISubController> _subControllers;
     [Header("Side Controllers")]
     private MetricRecorder _recorder;
     private ModuleSearchPicker _cachedPicker;
@@ -91,7 +92,25 @@ public class TuningController
         });
         
         Context = new TuningContext(_repository);
+        
         _listController = new ModuleListController(Context);
+        
+        _pipelineController = new PipelineController();
+        
+        _simulationManager = UnityEngine.Object.FindFirstObjectByType<SimulationManager>();
+        
+        _renderingController = new RenderingViewController(_simulationManager, 
+            onStart: ()=> _simulationManager.StartSimulation(),
+            onStop: ()=> _simulationManager.StopSimulation(),
+            onSpeedChanged: (f)=>_simulationManager.SetTimeScale(f),
+            onTimelineChanged:(f) =>
+            {
+                var realTime = f * _replayController.TotalDuration;
+                _replayController.ScrubTo(realTime);
+                _metricController.SetFocusTime(realTime);
+            });
+        
+        _replayController = new ReplayController(_simulationManager);
         _metricController = new MetricGraphController(onSave: () =>//save 버튼을 누르면요, 
             {
                 _liveSession.VehicleProfile = Context.TargetCar.Profile;
@@ -152,25 +171,35 @@ public class TuningController
                 if (string.IsNullOrEmpty(path)) return;
                 
                 LoadFile(path, false);
-            });
-        _pipelineController = new PipelineController();
-        
-        _simulationManager = UnityEngine.Object.FindFirstObjectByType<SimulationManager>();
-        
-        _renderingController = new RenderingViewController(_simulationManager, 
-            onStart: ()=> _simulationManager.StartSimulation(),
-            onStop: ()=> _simulationManager.StopSimulation(),
-            onSpeedChanged: (f)=>_simulationManager.SetTimeScale(f),
-            onTimelineChanged:(f) =>
+            },
+            onSlotClick: () =>
             {
-                var realTime = f * _replayController.TotalDuration;
-                _replayController.ScrubTo(realTime);
-                _metricController.SetFocusTime(realTime);
+                //시뮬레이션 내에서 카메라를 본체 한테 옮겨야함.
+                //1. 조건 확인을 해야한다.
+                if(!_replayController.IsSessionEnd(true)) _simulationManager.SetCameraToTarget(Context.TargetCar);
+                else _onShowWarning("A 슬롯의 리플레이가 종료되어 카메라를 차량으로 이동할 수 없습니다.");
+            },
+            onSlotBClick: () =>
+            {
+                if(!_replayController.IsSessionEnd(false)) _simulationManager.SetCameraToCurrentGhost();
+                else _onShowWarning("B 슬롯의 리플레이가 종료되어 카메라를 차량으로 이동할 수 없습니다.");
             });
+
+        _subControllers = new List<ISubController>();
+        //모든 서브 컨트롤러 리스트업
+        _subControllers.Add(Context);
+        _subControllers.Add(_repository);
+        _subControllers.Add(_listController);
+        _subControllers.Add(_pipelineController);
+        //_subControllers.Add(_simulationManager);
+        _subControllers.Add(_renderingController);
+        _subControllers.Add(_replayController);
+        _subControllers.Add(_metricController);
         
-        _replayController = new ReplayController(_simulationManager);
-        
-        
+        foreach(var subController in _subControllers)
+        {
+            subController.OnFloatingWarning+= _onShowWarning;
+        }
     }
     //이벤트 구독과정.
     private void BindInternalEvent()
@@ -430,13 +459,34 @@ public class TuningController
         {
             var currentDt = 1f;
             // [리플레이] 재생 중이라면 시간 흐름 처리
-        
+
             if (_replayController.IsReplaying && !_replayController.IsPaused)
             {
                 currentDt = dt * _renderingController.CurrentSpeed;
                 // [동기화 핵심] 
                 // 1. 차량 위치 이동
-                _replayController.Tick(currentDt);
+               
+                //카메라 위치 컨트롤.
+                var trackAFinished = _replayController.IsSessionEnd(true);
+                var trackBFinished = _replayController.IsSessionEnd(false);
+                
+                if (!_replayController.IsTrackAFinished && trackAFinished)
+                {
+                    
+                    _simulationManager.SetCameraToCurrentGhost();
+                    _replayController.IsTrackAFinished = true;
+                    _onShowWarning("A 슬롯의 리플레이가 종료되어 카메라를 유령 차량으로 이동합니다.");
+                }
+                else if (!_replayController.IsTrackBFinished && trackBFinished)
+                {
+                    _simulationManager.SetCameraToTarget(Context.TargetCar);
+                    _replayController.IsTrackBFinished = true;
+                    _onShowWarning("B 슬롯의 리플레이가 종료되어 카메라를 본체 차량으로 이동합니다.");
+                }
+                if (trackAFinished) _replayController.IsTrackAFinished= false;
+                if (trackBFinished) _replayController.IsTrackBFinished = false;
+       
+                if(_replayController.IsTrackAFinished )
                 // 2. 그래프 커서 이동 (시간 동기화)
                 _metricController.SetFocusTime(_replayController.CurrentTime);
 
@@ -444,6 +494,8 @@ public class TuningController
                 //1. 슬라이더를 조작하고 있는 상황에서는 값을 갱신 시켜주면 안된다.
                 //1-1. 슬라이더 조작 상태를 어떻게 인식할 것인가.
                 _renderingController.TimelineSlider.value = _replayController.CurrentTime / _replayController.TotalDuration;
+                
+                _replayController.Tick(currentDt);
               
             }
         }
@@ -520,9 +572,16 @@ public class TuningController
     
     private void HandleReplayEnd()
     {
+        
+        Debug.Log("Context.TargetCar : "+ Context.TargetCar.CachedGameObject.transform.position);
         _simulationManager.SetCarPhysic(false);// 여전히 움직일 필요는 전혀 없음. 시뮬 시작시만 on
         _simulationManager.SpawnToCurrentSpawn(false);
+        Debug.Log("Context.TargetCar : "+ Context.TargetCar.CachedGameObject.transform.position);
         if(_currentMode == TuningMode.Compare) _simulationManager.SpawnToCurrentSpawn(true);
+        _simulationManager.SetCameraToTarget(Context.TargetCar );
+        
+        
+        
         RefreshUI();
     }
     
@@ -542,7 +601,6 @@ public class TuningController
         _listController.RebuildFullList();
         _pipelineController.SetTarget(car);
     }
-
     
     
 

@@ -59,6 +59,9 @@ public class RewardTuningInspector : ISubController
 
 
     }
+
+    public event Action<string> OnFloatingWarning;
+
     public void SetTarget(RewardProfile profile)
     {
         _targetProfile = profile;

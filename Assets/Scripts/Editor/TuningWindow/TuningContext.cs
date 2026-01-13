@@ -11,7 +11,9 @@ public class TuningContext : ISubController
     public ITunableVehicle TargetCar { get; private set; } // = simManager.Focused
     
     private Dictionary<Type, BaseModule> _comparisonMap;
-    
+
+    private ISubController _subControllerImplementation;
+
     public Dictionary<Type, BaseModule> ComparisonMap => _comparisonMap;
 
     public IReadOnlyDictionary<Type, BaseModule> LiveModuleMap => TargetCar.ModuleMap;
@@ -67,4 +69,6 @@ public class TuningContext : ISubController
     {
         //throw new NotImplementedException();
     }
+
+    public event Action<string> OnFloatingWarning;
 }

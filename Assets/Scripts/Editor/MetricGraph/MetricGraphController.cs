@@ -15,9 +15,13 @@ public class MetricGraphController : ISubController
     private Button _saveButton;
     private Button _loadButton;
     private Button _loadButtonB;
-
-    private Label _slotAField;
-    private Label _slotBField;
+    
+    
+    private Button _slotAButton;
+    private Button _slotBButton;
+    
+    private Action _onSlotClick, _onSlotBClick;
+        
     private Action _onSave, _onLoad, _onLoadB;
     private List<MetricSession> _currentSessions = new List<MetricSession>();
     private List<MetricGraph> _activeGraphs = new List<MetricGraph>();
@@ -38,14 +42,14 @@ public class MetricGraphController : ISubController
         
         if (_currentSessions.Count == 1)
         {
-            _slotAField.text = _currentSessions[0].sessionName;
+            _slotAButton.text = _currentSessions[0].sessionName;
         }
         else if (_currentSessions.Count == 2)
         {
-            _slotAField.text = _currentSessions[0].sessionName;
-            _slotAField.style.color = Color.green;
-            _slotBField.text = _currentSessions[1].sessionName;
-            _slotBField.style.color = Color.darkGoldenRod;
+            _slotAButton.text = _currentSessions[0].sessionName;
+            _slotAButton.style.color = Color.green;
+            _slotBButton.text = _currentSessions[1].sessionName;
+            _slotBButton.style.color = Color.darkGoldenRod;
         }
         
         foreach (var entry in _currentSessions[0].metricEntries)
@@ -93,11 +97,13 @@ public class MetricGraphController : ISubController
         
     }
 
-    public MetricGraphController(Action onSave, Action onLoad, Action onLoadB)
+    public MetricGraphController(Action onSave, Action onLoad, Action onLoadB, Action onSlotClick,Action onSlotBClick)
     {
         _onSave = onSave;
         _onLoad = onLoad;
         _onLoadB = onLoadB;
+        _onSlotClick = onSlotClick;
+        _onSlotBClick = onSlotBClick;
     }
 
     public void Initialize(VisualElement root)
@@ -111,9 +117,13 @@ public class MetricGraphController : ISubController
         _loadButton = root.Q<Button>("session-load-button");
         _loadButtonB = root.Q<Button>("b-slot-load");
 
-        _slotAField = root.Q<Label>("slotA-data");
-        _slotBField = root.Q<Label>("slotB-data");
 
+        
+        _slotAButton = root.Q<Button>("slotA-button");
+        _slotBButton = root.Q<Button>("slotB-button");
+        
+        _slotAButton.clicked += _onSlotClick;
+        _slotBButton.clicked += _onSlotBClick;
         _saveButton.clicked += _onSave;
         _loadButton.clicked += _onLoad;
         if (_onLoadB != null)
@@ -124,6 +134,9 @@ public class MetricGraphController : ISubController
      
     
     }
+
+    public event Action<string> OnFloatingWarning;
+
     // 레코더가 세션을 만들거나, 차량이 연결되었을 때 호출
     private MetricGraph AddGraph(string name, MetricEntry dataEntry)
     {
@@ -196,6 +209,9 @@ public class MetricGraphController : ISubController
         // 2. Load B 버튼 (비교 모드이면서 + 안 바쁠 때만 활성)
         bool isCompareMode = (currentMode == TuningMode.Compare);
         _loadButtonB.SetEnabled(!isBusy && isCompareMode);
+        
+        _slotAButton.SetEnabled(isCompareMode && _currentSessions.Count>0 &&_currentSessions[0] != null);
+        _slotBButton.SetEnabled(isCompareMode && _currentSessions.Count > 1 && _currentSessions[1] != null);
 
         // [옵션] 아예 비교 모드가 아니면 버튼을 숨기고 싶다면?
         // _loadButtonB.style.display = isCompareMode ? DisplayStyle.Flex : DisplayStyle.None;

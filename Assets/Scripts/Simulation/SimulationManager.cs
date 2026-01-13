@@ -116,13 +116,8 @@ public class SimulationManager: MonoBehaviour
         _metricRecorder.ChangeCar(FocusedVehicle);
         
         // 카메라에게 "이 차를 찍어라" 명령
-        if (_camera != null && FocusedVehicle.CachedGameObject != null)
-        {
-            Debug.Log("camera test");
-            var rb = FocusedVehicle.CachedGameObject.GetComponent<Rigidbody>();
-            _camera.SetTarget(FocusedVehicle.CachedGameObject.transform, rb);
-        }
-        
+        SetCameraToTarget(FocusedVehicle);
+
         //대기위치로 이동(simEnv 0 위치)
         SpawnToSimulation(0,false);
     }
@@ -187,14 +182,18 @@ public class SimulationManager: MonoBehaviour
     {
         if (IsRunning) return;
         _currentSimEnv = _simEnvs[index];
-        if (isGhost)
+        if (isGhost && _currentGhostVehicle != null)
         {
             _currentGhostVehicle.position = _currentSimEnv.Spawn.position;
             _currentGhostVehicle.rotation =  _currentSimEnv.Spawn.rotation;
             return;
         }
    
-        
+        if( _focusedVehicleTransform == null)
+        {
+            Debug.LogError("Focused Vehicle is null. Cannot spawn.");
+            return;
+        }
         _focusedVehicleTransform.position =   _currentSimEnv.Spawn.position;
         _focusedVehicleTransform.rotation =   _currentSimEnv.Spawn.rotation;
     }
@@ -209,6 +208,27 @@ public class SimulationManager: MonoBehaviour
         _focusedVehicleTransform.position =   _currentSimEnv.Spawn.position;
         _focusedVehicleTransform.rotation =  _currentSimEnv.Spawn.rotation;
     }
+
+    public void SetCameraToTarget(ITunableVehicle vehicle)
+    {
+        if (_camera != null && vehicle.CachedGameObject != null)
+        {
+            Debug.Log("camera test");
+            var rb = FocusedVehicle.CachedGameObject.GetComponent<Rigidbody>();
+            _camera.SetTarget(FocusedVehicle.CachedGameObject.transform, rb);
+        }
+    }
+
+    public void SetCameraToCurrentGhost()
+    {
+        if (_camera != null && _currentGhostVehicle != null)
+        {
+            var rb = _currentGhostVehicle.GetComponent<Rigidbody>();
+            _camera.SetTarget(_currentGhostVehicle, rb);
+        }
+    }
+    
+    
 
     public void SetTimeScale(float scale)
     {

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,6 +23,8 @@ public class PipelineController : ISubController
         var container = root.Q<VisualElement>("pipeline-view-container");
         container.Add(_view.Root);
     }
+
+    public event Action<string> OnFloatingWarning;
 
     public void SetTarget(ITunableVehicle vehicle)
     {

@@ -28,7 +28,9 @@ public class ModuleListController : ISubController
         _listContainer = root.Q<VisualElement>("module-list-container");
         _rowTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Scripts/Editor/TuningWindow/ModuleWindow/ModuleComparisonRow.uxml");
     }
-    
+
+    public event Action<string> OnFloatingWarning;
+
     public void RebuildFullList()//이벤트에 반응할거에요
     {
         // 기존 정리

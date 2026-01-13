@@ -144,7 +144,9 @@ public class RenderingViewController : ISubController
 
 
     }
-    
+
+    public event Action<string> OnFloatingWarning;
+
 
     public void SetModeLayout(TuningMode mode, Action start, Action stop)
     {

@@ -25,6 +25,8 @@ public class TuningRepository : ISubController
     {
     }
 
+    public event Action<string> OnFloatingWarning;
+
     private void SetupDatabases(Type[] dataTypes)
     {
         _moduleDatabaseMap.Clear();

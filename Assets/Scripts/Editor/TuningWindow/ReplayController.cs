@@ -13,6 +13,11 @@ public class ReplayController : ISubController
     // 재생할 데이터
     private List<VehiclePose> _trackA;
     private List<VehiclePose> _trackB; // 비교용 (Ghost)
+   
+
+    public bool IsTrackAFinished { get; set; }
+
+    public bool IsTrackBFinished { get; set; }
 
     public float CurrentTime { get; private set; } // 그래프 등 외부에서 읽기용
     public float TotalDuration { get; private set; }
@@ -26,9 +31,16 @@ public class ReplayController : ISubController
 
     public void Initialize(VisualElement root) { }
 
+    public event Action<string> OnFloatingWarning;
+
     // 세션 로드 및 리플레이 모드 진입
     public void EnterReplayMode(MetricSession sessionA, MetricSession sessionB)
     {
+        if(sessionA == null || sessionB == null)
+        {
+            OnFloatingWarning?.Invoke("Both sessions must be provided to enter replay mode.");
+            return;
+        }
         IsReplaying = true;
         IsPaused = false;
         _trackA = sessionA?.trackData;
@@ -49,16 +61,31 @@ public class ReplayController : ISubController
         }
 
         // 0초 위치로 이동
+        IsTrackAFinished = false;
+        IsTrackBFinished = false;
         Step(0f);
         OnReplayStart?.Invoke();
     }
-
+    public bool IsSessionEnd(bool isSlotA)
+    {
+        if (isSlotA)
+        {
+            if (_trackA == null || _trackA.Count == 0) return true;
+            return CurrentTime >= _trackA[^1].time;
+        }
+        
+        
+        if (_trackB == null || _trackB.Count == 0) return true;
+        return CurrentTime >= _trackB[^1].time;
+        
+    }
+    
     public void ExitReplayMode()
     {
         IsReplaying = false;
         IsPaused = false;
-        _trackA = null;
-        _trackB = null;
+        //_trackA = null;
+        //_trackB = null;
 
         // SimManager에게 물리 켜라고 명령
         //_simManager.SetPhysicsState(true);
@@ -90,12 +117,13 @@ public class ReplayController : ISubController
             CurrentTime += dt;
             
             // 끝에 도달하면 멈춤 or 루프
-            if (CurrentTime >= TotalDuration)
+            if (CurrentTime > TotalDuration)
             {
                 CurrentTime = TotalDuration;
-                IsReplaying = false;
-                OnReplayEnd?.Invoke();
+                ExitReplayMode();
+                return;
             }
+            
         }
 
         // 시간 변화에 따른 위치 계산 및 이동

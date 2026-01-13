@@ -1,6 +1,8 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 namespace Editor.RewardWindow
 {
@@ -14,7 +16,9 @@ namespace Editor.RewardWindow
         {
             SetupDatabase();
         }
-        
+
+        public event Action<string> OnFloatingWarning;
+
         private void SetupDatabase()
         {
             _rewardProfileDatabase = AssetDatabase.LoadAssetAtPath<RewardProfileDatabase>("Assets/Resources/Database/RewardProfileDatabase.asset");
