@@ -12,7 +12,10 @@ public enum TuningMode
     Replay,
     Compare
 }
-
+/// <summary>
+/// GitHub에 오시면 해당 프로젝트와 관련된 코드 전체를 확인하실 수 있습니다.
+/// https://github.com/zopa2161/Final-Tuning
+/// </summary>
 public class TuningController
 {
     [Header("Controllers")]
@@ -26,6 +29,7 @@ public class TuningController
     private PipelineController _pipelineController;
 
     private List<ISubController> _subControllers;
+    
     [Header("Side Controllers")]
     private MetricRecorder _recorder;
     private ModuleSearchPicker _cachedPicker;
@@ -40,7 +44,8 @@ public class TuningController
     //모드 관련
     [Header("Mod")]
     private DropdownField _modDropdown;
-
+    // 차량 선택 드랍다운
+    private DropdownField _carDropdown;
     private VisualElement _root;
     private TuningMode _currentMode;
     
@@ -67,7 +72,7 @@ public class TuningController
         
         //===모드 드랍다운===
         _modDropdown = root.Q<DropdownField>("tuningmode-dropdown");
-        var nameList = new List<string>();
+
         List<string> modNames = Enum.GetNames(typeof(TuningMode)).ToList();
 
         _currentSessionLabel = root.Q<Label>("current-session-label");
@@ -79,6 +84,22 @@ public class TuningController
             SetMode((TuningMode)Enum.Parse(typeof(TuningMode), evt.newValue));
         });
         SetMode(TuningMode.Live);
+        //===차량 선택 드랍다운=== (초기값 세팅은 사전에 함으로 굳이 값을 먹여줄 필요 x)
+        _carDropdown = root.Q<DropdownField>("car-dropdown");
+        //1. 차량 데이터 베이스 리스트 가져오기. 이름 리스트 만들기.
+        var carNameList = new List<string>();
+        _repository.CarPrefabDatabase.Datas.ForEach(x => carNameList.Add(x.GetComponent<CarMainSystem>().Profile.Name));
+        _carDropdown.choices = carNameList; 
+        _carDropdown.value = carNameList[0];
+        _carDropdown.RegisterValueChangedCallback(evt =>
+        {
+            //var carObj = _repository.CarPrefabDatabase.Datas.Find(x => x.GetComponent<CarMainSystem>().Profile.Name == evt.newValue);
+            //애셋이 아니라 씬 안의 객체를 찾아와야함.
+            var carObj = _simulationManager.VehicleMap.Values.First(x => x.Profile.Name == evt.newValue);
+            if (carObj == null) return;
+            
+            Context.SetTargetCar(carObj);
+        });
         RefreshVisualization();
         
         
@@ -600,6 +621,7 @@ public class TuningController
         //_graphController.OnSetTargetCar(car);
         _listController.RebuildFullList();
         _pipelineController.SetTarget(car);
+        _simulationManager.SelectCar(car.Profile.ID);
     }
     
     

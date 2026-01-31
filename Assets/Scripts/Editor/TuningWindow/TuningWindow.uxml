@@ -29,6 +29,9 @@
                                 <ui:Button text="Load Session" name="session-load-button" class="toolbar-btn" />
                                 <ui:Button text="Load B slot" name="b-slot-load" class="toolbar-btn" />
                                 <ui:DropdownField name="sim-env-dropdown" />
+                                <ui:DropdownField name="car-dropdown" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="replay-slider" class="control-panel bottom-panel">
                                 <ui:VisualElement style="flex-grow: 1;">
                                     <ui:Slider value="42" high-value="100" name="timeline-slider" />
                                 </ui:VisualElement>

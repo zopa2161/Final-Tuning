@@ -54,6 +54,7 @@ public class ModuleListController : ISubController
     {
         // 데이터 준비
         var liveData = _context.GetLiveData(type);
+        if(liveData == null ) Debug.Log($"Live Data for {type.Name} is null. Check your module database.");
         var soData = _context.ComparisonMap[type] as ScriptableObject;
 
         // Row Controller 생성 (버튼 클릭 시 Controller에게 명령 전달)

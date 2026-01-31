@@ -42,6 +42,7 @@ public class TuningContext : ISubController
         if (TargetCar == vehicle) return;
         
         TargetCar = vehicle;
+        
         OnTargetCarChanged?.Invoke();
     }
     

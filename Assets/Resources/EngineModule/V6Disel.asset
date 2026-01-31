@@ -24,7 +24,7 @@ MonoBehaviour:
   id: 3
   moduleName: V6Disel
   icon: {fileID: 0}
-  _engineType: 1
+  _engineType: 4
   _ccPerCylinder: 449
   _torquePerLiter: 120
   _idleRPM: 800

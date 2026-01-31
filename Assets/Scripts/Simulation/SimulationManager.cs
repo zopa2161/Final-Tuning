@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.MLAgents;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class SimulationManager: MonoBehaviour
 {
@@ -68,7 +69,7 @@ public class SimulationManager: MonoBehaviour
         _onShowWarning = onShowWarning;
         //레코더 우선 생성
         _metricRecorder = new MetricRecorder();
-
+        _currentSimEnv = _simEnvs[0];
         int i = 0;
         foreach (var vehiclePrefab in db.Datas)
         {
@@ -111,6 +112,13 @@ public class SimulationManager: MonoBehaviour
     }
     public void SelectCar(int id)
     {
+        //SpawnToSimulation(0,false);
+        //여기서 기존 FocusedVehicle에 차량이 존재하면 id를 알아내서 spawn으로 보내야함.
+        if (FocusedVehicle != null)
+        {
+            var formerID = FocusedVehicle.Profile.ID;
+            TeleportMainVehicle(_vehicleSpawnPoints[formerID].position, _vehicleSpawnPoints[formerID].rotation);
+        }
         FocusedVehicle = _vehicleMap[id];
         _focusedVehicleTransform = FocusedVehicle.CachedGameObject.transform;
         _metricRecorder.ChangeCar(FocusedVehicle);
@@ -118,8 +126,8 @@ public class SimulationManager: MonoBehaviour
         // 카메라에게 "이 차를 찍어라" 명령
         SetCameraToTarget(FocusedVehicle);
 
-        //대기위치로 이동(simEnv 0 위치)
-        SpawnToSimulation(0,false);
+ 
+        SpawnToCurrentSpawn(false);
     }
 
     public void SelectGhostVehicleByLoad(VehicleProfile profile)

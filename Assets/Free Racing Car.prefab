@@ -673,7 +673,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 00a06851f823afb47a9776c0a5822d90, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: f7d3f154a4eb40845be1ad24b6d2205a, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: CarDriver

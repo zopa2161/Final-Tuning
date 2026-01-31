@@ -192,6 +192,6 @@ public class RenderingViewController : ISubController
     {
         _startButton.text = isPlaying ? "Pause" : "Play";
     }
-
+    
   
 }

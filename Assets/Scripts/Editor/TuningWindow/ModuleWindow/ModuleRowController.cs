@@ -5,6 +5,11 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using Sirenix.OdinInspector.Editor; // Odin 필수
 
+public class InstanceWrapper : ScriptableObject
+{
+    [SerializeReference] // 이게 핵심입니다. 모든 타입을 다형성 있게 받습니다.
+    public object Data;
+}
 public class ModuleRowController : IDisposable
 {
     // UI Root (이걸 스크롤뷰에 Add 함)
@@ -88,7 +93,7 @@ public class ModuleRowController : IDisposable
             label.text = _moduleType.Name;
         }
     }
-
+    private UnityEditor.Editor _cachedEditor;
     // SO가 교체될 때마다 트리 다시 생성해야 함
     private void SetupSOTree()
     {
@@ -102,16 +107,34 @@ public class ModuleRowController : IDisposable
             _soTree = PropertyTree.Create(_soData);
             soContainer.onGUIHandler = () => 
             {
-                // SO 쪽은 수정 불가하게 막고 싶다면:
-                // EditorGUI.BeginDisabledGroup(true);
                 _soTree.Draw(false);
-                // EditorGUI.EndDisabledGroup();
             };
         }
         else
         {
-            soContainer.onGUIHandler = () => GUILayout.Label("No SO Selected");
+           soContainer.onGUIHandler = () => GUILayout.Label("No SO Selected");
         }
+        
+        // serialized로 그리기 테스트 코드
+        // var targetObject = _soData as UnityEngine.Object;
+        //
+        // if (targetObject != null)
+        // {
+        //     
+        //     UnityEditor.Editor.CreateCachedEditor(targetObject, null, ref _cachedEditor);
+        //     soContainer.onGUIHandler = () =>
+        //     {
+        //         if (_cachedEditor != null && _cachedEditor.target != null)
+        //         {
+        //             // 인스펙터 화면을 그대로 그립니다 (스크립트 필드 포함)
+        //             _cachedEditor.OnInspectorGUI();
+        //         }
+        //     };
+        // }
+        // else
+        // {
+        //     soContainer.onGUIHandler = () => GUILayout.Label("No Live Data (or not a Unity Object)");
+        // }
     }
 
     private void BindButtons()

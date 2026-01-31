@@ -24,7 +24,7 @@ MonoBehaviour:
   id: 0
   moduleName: baseEigine
   icon: {fileID: 0}
-  _engineType: 1
+  _engineType: 5
   _ccPerCylinder: 499
   _torquePerLiter: 100
   _idleRPM: 680
